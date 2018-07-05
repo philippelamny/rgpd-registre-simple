@@ -1,0 +1,43 @@
+# Adopt version 3 syntax:
+#   https://docs.docker.com/compose/compose-file/#/versioning
+version: '3'
+
+volumes:
+  composer_data:
+    driver: local
+
+services:
+
+###########################################
+# Setup the reverse proxy Ngynx container #
+###########################################
+  nginx-proxy:
+      image: jwilder/nginx-proxy
+      restart: 'no'
+      container_name: nginx-proxy
+      ports:
+        - "80:80"
+      volumes:
+        - /var/run/docker.sock:/tmp/docker.sock:ro
+
+###########################################
+# Setup the Apache/PHP/Composer container #
+###########################################
+  test_httpd:
+    container_name: quickrest_httpd
+    restart: 'no'
+    image: nicolasfrey/php7.0-apache-composer:0.2
+    ports:
+      - 8084:80
+    environment:
+      - TZ=Europe/Paris
+      - VIRTUAL_HOST=test.local
+    volumes:
+      - ./:/var/www/html:cached
+      - composer_data:/usr/local/composer
+      - ./docker/apache/vhosts/:/etc/apache2/sites-enabled
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

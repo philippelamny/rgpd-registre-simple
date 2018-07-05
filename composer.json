@@ -1,0 +1,19 @@
+{
+    "require": {
+        "phpoffice/phpexcel": "1.8.*",
+        "TrTool/ParseUrlReST": "dev-develop"
+    },
+
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/philippelamny/TrTool-ParseUrlReST"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MyManagerAction\\": "./managerAction"
+        }
+    }
+
+}

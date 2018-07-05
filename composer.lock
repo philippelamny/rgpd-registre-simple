@@ -1,0 +1,123 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "3be980cfe126debd2fc49725a6eaa8d5",
+    "packages": [
+        {
+            "name": "TrTool/ParseUrlReST",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/philippelamny/TrTool-ParseUrlReST.git",
+                "reference": "064092c208b725f6d0357cf547a40c32713644d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/philippelamny/TrTool-ParseUrlReST/zipball/064092c208b725f6d0357cf547a40c32713644d3",
+                "reference": "064092c208b725f6d0357cf547a40c32713644d3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TrTool\\ParseUrlReST\\Src\\": "./src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Philippe Lam",
+                    "email": "philippe.lam.ny@gmail.com"
+                }
+            ],
+            "description": "The package consists parse your URL and to generate a Class Action Manager",
+            "keywords": [
+                "PARSER",
+                "REST",
+                "SIMPLE",
+                "URL"
+            ],
+            "support": {
+                "source": "https://github.com/philippelamny/TrTool-ParseUrlReST/tree/develop",
+                "issues": "https://github.com/philippelamny/TrTool-ParseUrlReST/issues"
+            },
+            "time": "2018-07-05T11:48:11+00:00"
+        },
+        {
+            "name": "phpoffice/phpexcel",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPOffice/PHPExcel.git",
+                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+                "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xml": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPExcel": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "http://blog.maartenballiauw.be"
+                },
+                {
+                    "name": "Mark Baker"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "http://blog.rootslabs.net"
+                },
+                {
+                    "name": "Erik Tilt"
+                }
+            ],
+            "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+            "homepage": "http://phpexcel.codeplex.com",
+            "keywords": [
+                "OpenXML",
+                "excel",
+                "php",
+                "spreadsheet",
+                "xls",
+                "xlsx"
+            ],
+            "abandoned": "phpoffice/phpspreadsheet",
+            "time": "2015-05-01T07:00:55+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "trtool/parseurlrest": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

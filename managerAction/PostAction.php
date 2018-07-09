@@ -25,6 +25,51 @@ class PostAction extends AManager
             ->setTitle("registre_rgpd_" + preg_replace( '/[^a-z0-9]+/', '-', strtolower( $this->_options["grpd_raison_sociale"] )))
             ->setSubject("Registres d'activités");
 
+        // Feuille 1: Information Sur la société
+        $objWorkSheet = $objPHPExcel->getActiveSheet();
+        $objWorkSheet->setTitle("Informations Generales");
+
+        // Pour chaque activité, creer une nouvelle feuille
+        $nbActivites = 1;
+        $arActivites = array();
+        foreach ($this->_options["grpd_act_name"] as $name) {
+            $newActivite = $objPHPExcel->createSheet();
+            $newActivite->setTitle("Activité " . $nbActivites);
+
+            $arActivites[$nbActivites - 1] = $newActivite;
+            $nbActivites++;
+        }
+
+        $pColumnTitle = 0;
+        $pColumnValue = 1;
+        $pRow = 1; // Principal
+        $pActRow = 1; // Activite
+        foreach ($this->_options as $key => $value) {
+            if (!preg_match('/^grpd_act_/', $key)) {
+                $arTitle = explode('_', $key);
+                array_shift($arTitle);
+                $objWorkSheet->setCellValueByColumnAndRow($pColumnTitle, $pRow, implode(" ", $arTitle));
+                $objWorkSheet->setCellValueByColumnAndRow($pColumnValue, $pRow, $value);
+                $pRow++;
+            }
+            else {
+                $arTitle = explode('_', $key);
+                array_shift($arTitle);
+                array_shift($arTitle);
+                $nbActivites = 0;
+                foreach ($value as $sValue) {
+                    $arActivites[$nbActivites]->setCellValueByColumnAndRow($pColumnTitle, $pActRow, implode(" ", $arTitle));
+                    $arActivites[$nbActivites]->setCellValueByColumnAndRow($pColumnValue, $pActRow, $sValue);
+                    $nbActivites++;
+                }
+                $pActRow++;
+            }
+        }
+        // Add All worksheet
+        /*$objPHPExcel->addSheet($objWorkSheet);
+        foreach ($arActivites as $actitive) {
+            $objPHPExcel->addSheet($actitive);
+        }*/
 
         /*
             ["grpd_raison_sociale"]

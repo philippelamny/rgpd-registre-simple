@@ -12,16 +12,15 @@
   </head>
   <body>
 
-    <div>
-      <h1><a href="https://www.cnil.fr/fr/RGDP-le-registre-des-activites-de-traitement">Registre conforme</a> au reglement général à la protection des données (<a href="https://www.cnil.fr/fr/le-rgpd-cest-maintenant-les-changements-retenir-et-les-outils-pour-bien-se-preparer">GRPD</a>).</h1>
+    <div id="app">
+
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
-      <!-- Vue JS -->
-      <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+      <h1><a href="https://www.cnil.fr/fr/RGDP-le-registre-des-activites-de-traitement">{{ data.title }}</a> au reglement général à la protection des données (<a href="https://www.cnil.fr/fr/le-rgpd-cest-maintenant-les-changements-retenir-et-les-outils-pour-bien-se-preparer">GRPD</a>).</h1>
 
       <h2>Objectif</h2>
       <span>Ce document vise à recenser les traitements de données personnelles mis en œuvre dans votre organismeen tant que responsable de traitement.Centralisé et régulièrement mis à jour, il vous permet de répondre à l’obligation de tenir un registre prévue parle RGPD</span>
@@ -42,7 +41,6 @@
       </ol>
 
       <h4>Information à la creation du registre en conformité avec le RGPD <i>référence à la <a href="https://www.cnil.fr/sites/default/files/atoms/files/registre_rgpd_basique.pdf">template</a> fournie par la CNIL</i></h4>
-
 
       <div class="container col-sm-12 mt-4" id="content-for-creation">
         <form method="POST" action="http://quickrest.local:8084/">
@@ -1028,10 +1026,17 @@
       </div>
     </div>
     <footer style="height: 50px;"></footer>
+
+    <!-- Vue JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./index-vu.js"></script>
+
     <script>
+
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
+
     </script>
   </body>
 </html>

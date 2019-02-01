@@ -97,7 +97,7 @@
                     <input :value="data.pdg.town" type="text" class="form-control" id="coord-responsable-ville" name="grpd_coord_responsable_ville">
                   </div>
                   <div class="form-group col-md-4">
-                    <component-pays-list id="'coord-responsable-pays'" name="'grpd_coord_responsable_pays'" value="data.pdg.country" />
+                    <component-pays-list id="'coord-responsable-pays'" name="'grpd_coord_responsable_pays'" :value="data.pdg.country" />
                   </div>
                 </div>
                 <div class="form-row">
@@ -145,35 +145,7 @@
                     <input type="text" class="form-control" id="coord-dpo-ville" placeholder="Nancy" name="grpd_coord_dpo_ville">
                   </div>
                   <div class="form-group col-md-4">
-                    <label for="coord-dpo-pays">Pays</label>
-                    <select id="coord-dpo-pays" class="form-control" name="grpd_coord_dpo_pays">
-                      <option value="Allemagne">Allemagne</option>
-                      <option value="Autriche">Autriche</option>
-                      <option value="Belgique">Belgique</option>
-                      <option value="Danemark">Danemark</option>
-                      <option value="Espagne">Espagne</option>
-                      <option value="Finlande">Finlande</option>
-                      <option value="France" selected>France</option>
-                      <option value="Grèce">Grèce</option>
-                      <option value="Hongrie">Hongrie</option>
-                      <option value="Irlande">Irlande</option>
-                      <option value="Islande">Islande</option>
-                      <option value="Italie">Italie</option>
-                      <option value="Lettonie">Lettonie</option>
-                      <option value="Liban">Liban</option>
-                      <option value="Luxembourg">Luxembourg</option>
-                      <option value="Monaco">Monaco</option>
-                      <option value="Norvège">Norvège</option>
-                      <option value="Nouvelle-Zelande">Nouvelle-Zélande</option>
-                      <option value="Pays-Bas">Pays-Bas</option>
-                      <option value="Pologne">Pologne</option>
-                      <option value="Portugal">Portugal</option>
-                      <option value="Roumanie">Roumanie</option>
-                      <option value="Royaume-Uni">Royaume-Uni</option>
-                      <option value="Russie">Russie</option>
-                      <option value="Sued">Suède</option>
-                      <option value="Suisse">Suisse</option>
-                    </select>
+                    <component-pays-list id="coord-dpo-pays" name="'grpd_coord_dpo_pays'" :value="data.dpo.country" />
                   </div>
                 </div>
                 <div class="form-row">
@@ -190,25 +162,9 @@
             </div>
           </div>
 
-          <div id="content-for-liste-activite">
-            <h5>Activités de l’organisme impliquant le traitement de données personnelles <button type="button" class="btn btn-primary">Encours <span class="badge badge-light">2</span></button></h5>
 
-            <!--
-            <div id="act-list-header" class="form-inline mb-3">
-              <div class="form-group col-md-10">
-                <label for="nouvelle-activite" class="col-md-2">Nouvelle Activité</label>
-                <input type="text" class="form-control col-md-10" id="nouvelle-activite" placeholder="Nom de l'activité">
-              </div>
-              <div class="form-group col-md-2">
-                <button class="btn btn-primary">Ajouter</button>
-              </div>
-            </div>
-            -->
+          <component-activites-list />
 
-            <div id="act-list-body">
-              <component-activites-list />
-            </div>
-          </div>
 
           <div class="fixed-bottom mx-auto">
             <button type="submit" class="btn btn-primary btn-success">excel</button>

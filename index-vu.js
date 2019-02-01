@@ -11,21 +11,32 @@ let ComponentActivitesList = {
         }
     },
     template: `
-        <div class="row">
-            <div class="col-2">
-                <div class="list-group" id="acts-list-tab" role="tablist">
-                <a class="list-group-item list-group-item-action active" data-toggle="list" href="#act-1" role="tab" ><span data-toggle="tooltip" data-placement="top" title="Traitement devis client">Activité <span>1</span></span></a>
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="#act-2" role="tab" ><span data-toggle="tooltip" data-placement="top" title="Traitement facture client">Activité <span>2</span></span></a>
-                <!--
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="#act-3" role="tab"><span data-toggle="tooltip" data-placement="top" title="Traitement fournisseurs">Activité <span>3</span></span></a>
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="#act-4" role="tab" ><span data-toggle="tooltip" data-placement="top" title="Traitement devis achat">Activité <span>4</span></span></a>
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="#act-5" role="tab" ><span data-toggle="tooltip" data-placement="top" title="Traitement facture achat">Activité <span>5</span></span></a>
-                -->
+        <div id="content-for-liste-activite">
+            <h5>Activités de l’organisme impliquant le traitement de données personnelles <button type="button" class="btn btn-primary">Encours <span class="badge badge-light">2</span></button></h5>
+    
+            <div id="act-list-header" class="form-inline mb-3">
+              <div class="form-group col-md-10">
+                <label for="nouvelle-activite" class="col-md-2">Nouvelle Activité</label>
+                <input type="text" class="form-control col-md-10" id="nouvelle-activite" placeholder="Nom de l'activité">
+              </div>
+              <div class="form-group col-md-2">
+                <button class="btn btn-primary">Ajouter</button>
+              </div>
             </div>
-            </div>
-            <div class="col-10">
-                <div class="tab-content" id="acts-tab-content">
-                    <component-activite-item />
+    
+            <div id="act-list-body">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="list-group" id="acts-list-tab" role="tablist">
+                            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#act-1" role="tab" ><span data-toggle="tooltip" data-placement="top" title="Traitement devis client">Activité <span>1</span></span></a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" href="#act-2" role="tab" ><span data-toggle="tooltip" data-placement="top" title="Traitement facture client">Activité <span>2</span></span></a>
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="tab-content" id="acts-tab-content">
+                            <component-activite-item />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -809,6 +820,7 @@ let ComponentPaysList = {
         value: ''
     },
     template: `
+    <div>
         <label :for="id">Pays</label>
         <select :value="value" :id="id" class="form-control" :name="name">
             <option value="Allemagne">Allemagne</option>
@@ -838,6 +850,7 @@ let ComponentPaysList = {
             <option value="Sued">Suède</option>
             <option value="Suisse">Suisse</option>
         </select>
+    </div>
     `
 };
 
@@ -872,7 +885,7 @@ var vue = new Vue({
                 , address_2: 'dpo_address_2'
                 , cp: 'dpo_address_cp'
                 , town: 'dpo_town'
-                , country: 'fr'
+                , country: 'France'
                 , email: 'dpo_email'
                 , tel: 'dpo_tel'
             }

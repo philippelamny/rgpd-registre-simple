@@ -854,10 +854,88 @@ let ComponentPaysList = {
     `
 };
 
+let ComponentAddressItem = {
+    props: {
+        id: '',
+        withRS: false,
+        active: false,
+        info: {
+            first_name: ''
+            , last_name: ''
+            , address_1: ''
+            , address_2: ''
+            , cp: ''
+            , town: ''
+            , country: ''
+            , email: ''
+            , tel: ''
+        }
+    },
+    computed: {
+      myClass() {
+          if (this.active) {
+              return 'show active';
+          }
+          else {
+              return '';
+          }
+      }
+    },
+    template: `
+    <div :class="'tab-pane fade ' + myClass" :id="id" role="tabpanel" :aria-labelledby="id + '-tab'" >
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label :for="id+'-nom'">Nom</label>
+            <input :value="info.last_name" type="text" class="form-control" :id="id+'-nom'" >
+          </div>
+          <div class="form-group col-md-3">
+            <label :for="id+'-prenom'">Prénom</label>
+            <input :value="info.first_name" type="text" class="form-control" :id="id+'-prenom'" >
+          </div>
+          <div class="form-group col-md-6" v-if="withRS">
+            <label :for="id+'-rs'">Société <i>si externe</i></label>
+            <input type="text" class="form-control" :id="id+'-rs'">
+          </div>
+        </div>
+        <div class="form-group">
+          <label :for="id+'-adr1'">Address</label>
+          <input :value="info.address_1" type="text" class="form-control" :id="id+'-adr1'">
+        </div>
+        <div class="form-group">
+          <label :for="id+'-adr2'">Address 2</label>
+          <input :value="info.address_2" type="text" class="form-control" :id="id+'-adr2'">
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <label :for="id+'-cp'">CP</label>
+            <input :value="info.cp" type="text" class="form-control" :id="id+'-cp'" >
+          </div>
+          <div class="form-group col-md-6">
+            <label :for="id+'-ville'">Vile</label>
+            <input :value="info.town" type="text" class="form-control" :id="id+'-ville'" >
+          </div>
+          <div class="form-group col-md-4">
+            <component-pays-list id="'{{ id }}-pays'" :value="info.country" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label :for="id+'-email'">Email</label>
+            <input :value="info.email" type="email" class="form-control" :id="id+'email'" >
+          </div>
+          <div class="form-group col-md-6">
+            <label :for="id+'-tel'">Tel</label>
+            <input :value="info.tel" type="text" class="form-control" :id="id+'-tel'">
+          </div>
+        </div>
+    </div>
+    `
+};
+
 Vue.component('component-activites-list', ComponentActivitesList);
 Vue.component('component-activite-item', ComponentActiviteItem);
 Vue.component('component-pays-list', ComponentPaysList);
-
+Vue.component('component-address-item', ComponentAddressItem);
 
 
 var vue = new Vue({

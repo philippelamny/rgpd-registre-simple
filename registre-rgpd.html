@@ -68,97 +68,10 @@
               </li>
             </ul>
             <div class="tab-content" id="coord-tab-conten">
-              <div class="tab-pane fade show active" id="coord-responsable" role="tabpanel" aria-labelledby="coord-responsable-tab" >
-                <div class="form-row">
-                  <div class="form-group col-md-3">
-                    <label for="coord-responsable-nom">Nom</label>
-                    <input :value="data.pdg.last_name" type="text" class="form-control" id="coord-responsable-nom" placeholder="Dupont" name="grpd_coord_responsable_nom">
-                  </div>
-                  <div class="form-group col-md-3">
-                    <label for="coord-responsable-prenom">Prénom</label>
-                    <input :value="data.pdg.first_name" type="text" class="form-control" id="coord-responsable-prenom" placeholder="André" name="grpd_coord_responsable_prenom">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="coord-responsable-adr1">Address</label>
-                  <input :value="data.pdg.address_1" type="text" class="form-control" id="coord-responsable-adr1" placeholder="6 place de bretagne" name="grpd_coord_responsable_adr1">
-                </div>
-                <div class="form-group">
-                  <label for="coord-responsable-adr2">Address 2</label>
-                  <input :value="data.pdg.address_2" type="text" class="form-control" id="coord-responsable-adr2" placeholder="Apartment 71" name="grpd_coord_responsable_adr2">
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-2">
-                    <label for="coord-responsable-cp">CP</label>
-                    <input :value="data.pdg.cp" type="text" class="form-control" id="coord-responsable-cp" name="grpd_coord_responsable_cp">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="coord-responsable-ville">Vile</label>
-                    <input :value="data.pdg.town" type="text" class="form-control" id="coord-responsable-ville" name="grpd_coord_responsable_ville">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <component-pays-list id="'coord-responsable-pays'" name="'grpd_coord_responsable_pays'" :value="data.pdg.country" />
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="coord-responsable-email">Email</label>
-                    <input type="email" class="form-control" id="coord-responsable-email" placeholder="dupont-andre-xxx@gmail.com" name="grpd_coord_responsable_email">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="coord-responsable-tel">Tel</label>
-                    <input type="text" class="form-control" id="coord-responsable-tel" placeholder="+33 X XX XX XX XX" name="grpd_coord_responsable_tel">
-                  </div>
-                </div>
 
-              </div>
-              <div class="tab-pane fade" id="coord-dpo" role="tabpanel" aria-labelledby="coord-dpo-tab">
-                <div class="form-row">
-                  <div class="form-group col-md-3">
-                    <label for="coord-dpo-nom">Nom</label>
-                    <input type="text" class="form-control" id="coord-dpo-nom" placeholder="Lam" name="grpd_coord_dpo_nom">
-                  </div>
-                  <div class="form-group col-md-3">
-                    <label for="coord-dpo-prenom">Prénom</label>
-                    <input type="text" class="form-control" id="coord-dpo-prenom" placeholder="Philippe" name="grpd_coord_dpo_prenom">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="coord-dpo-rs">Société <i>si DPO externe</i></label>
-                    <input type="text" class="form-control" id="coord-dpo-rs" placeholder="Philippe" name="grpd_coord_dpo_raison_sociale">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="coord-dpo-adr1">Address</label>
-                  <input type="text" class="form-control" id="coord-dpo-adr1" placeholder="27 rue Ambroise Thomas" name="grpd_coord_dpo_adr1">
-                </div>
-                <div class="form-group">
-                  <label for="coord-dpo-adr2">Address 2</label>
-                  <input type="text" class="form-control" id="coord-dpo-adr2" placeholder="" name="grpd_coord_dpo_adr2">
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-2">
-                    <label for="coord-dpo-cp">CP</label>
-                    <input type="text" class="form-control" id="coord-dpo-cp" placeholder="54000" name="grpd_coord_dpo_cp">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="coord-dpo-ville">Vile</label>
-                    <input type="text" class="form-control" id="coord-dpo-ville" placeholder="Nancy" name="grpd_coord_dpo_ville">
-                  </div>
-                  <div class="form-group col-md-4">
-                    <component-pays-list id="coord-dpo-pays" name="'grpd_coord_dpo_pays'" :value="data.dpo.country" />
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="coord-dpo-email">Email</label>
-                    <input type="email" class="form-control" id="coord-dpo-email" placeholder="philippe.lam.ny@gmail.com" name="grpd_coord_dpo_email">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="coord-dpo-tel">Tel</label>
-                    <input type="text" class="form-control" id="coord-dpo-tel" placeholder="+33 6 99 61 66 70" name="grpd_coord_dpo_tel">
-                  </div>
-                </div>
-              </div>
+              <component-address-item :id="'coord-responsable'" :info="data.pdg"></component-address-item>
+
+              <component-address-item :id="'coord-dpo'" :info="data.dpo" :active="false" :withRS="true"></component-address-item>
             </div>
           </div>
 

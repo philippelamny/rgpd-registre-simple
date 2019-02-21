@@ -8,6 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <title>RGPD Conformité</title>
   </head>
   <body>
@@ -77,13 +79,18 @@
 
           <component-activites />
 
-          <div class="fixed-bottom mx-auto">
-            <button type="submit" class="btn btn-primary btn-success">excel</button>
-          </div>
+
         <!--</form>-->
       </div>
+
+      <footer style="height: 50px;">
+        <div class="fixed-bottom mx-auto">
+          <button class="btn btn-primary btn-success" @click="generateExcel()">excel</button>
+        </div>
+      </footer>
+
     </div>
-    <footer style="height: 50px;"></footer>
+
 
     <!-- Vue JS -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>

@@ -470,4 +470,16 @@ var vue = new Vue({
             , activites: {}
         },
     },
+    methods: {
+        generateExcel() {
+            axios({
+                method:'post',
+                url:'http://quickrest.local:8084/'
+            })
+            .then(function(response) {
+                console.log(response);
+            });
+
+        }
+    },
 });

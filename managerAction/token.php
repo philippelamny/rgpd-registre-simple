@@ -9,7 +9,7 @@ namespace MyManagerAction;
 class Token
 {
 
-    const __TOKEN_ALLOW = array('trung');
+    const __TOKEN_ALLOW = [];
 
     /**
      * Savoir si c'est bon ou pas
@@ -17,7 +17,9 @@ class Token
      * @return bool
      */
     public static function isOK($token) {
-        return true;
+
+        if (empty(__TOKEN_ALLOW)) return true;
+
         return in_array($token, self::__TOKEN_ALLOW);
     }
 

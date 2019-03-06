@@ -2,20 +2,7 @@ let ComponentActivites = {
     props: {
         list: {
             type: Array,
-            default: () => [
-                {
-                    isActive: true,
-                    info: {
-                        nom: 'activité 1'
-                    }
-                },
-                {
-                    isActive: false,
-                    info: {
-                        nom: 'activité 2'
-                    }
-                }
-            ],
+            default: [],
         }
     },
     computed: {
@@ -108,6 +95,41 @@ let ComponentActivites = {
     `
 };
 
+function getInfoDefaultActivity() {
+    return {
+        created_at: '',
+        updated_at: '',
+
+        nom: '',
+        nom_responsable: '',
+        software_name: '',
+        objectif: '',
+        categorie_personnes_concernees: ['', '', '', '', ''],
+        categorie_donnees_collectees: '',
+        vie_personnelle: '',
+        vie_professionnelle: '',
+        info_eco_finance: '',
+        donnees_connexion: '',
+        donnees_localisation: '',
+        internet: '',
+        autre_categories_donnees: '',
+        donnees_sensibles: '',
+        nombre_duree_conservation: '',
+        duree_conservation_specifique: '',
+        categorie_destinataire: ['', '', '', ''],
+        organisme_externe: ['', '', '',''],
+        sous_traitant: ['', '', '', ''],
+        transfer_donnees_hors_ue: '',
+        controle_acces_utilisateurs: '',
+        mesure_tracabilite: '',
+        mesure_protection_logiciel: '',
+        sauvegarde_donnees: '',
+        chiffrement_donnees: '',
+        controle_sous_traitant: '',
+        autre_mesure: ''
+    };
+}
+
 let ComponentActiviteItem = {
     props: {
         isActive: {
@@ -120,40 +142,8 @@ let ComponentActiviteItem = {
         },
         info: {
             type: Object,
-            default: {
-                created_at: '',
-                updated_at: '',
-
-                nom: '',
-                nom_responsable: '',
-                software_name: '',
-                objectif: '',
-                categorie_personnes_concernees: ['', '', '', '', ''],
-                categorie_donnees_collectees: '',
-                vie_personnelle: '',
-                vie_professionnelle: '',
-                info_eco_finance: '',
-                donnees_connexion: '',
-                donnees_localisation: '',
-                internet: '',
-                autre_categories_donnees: '',
-                donnees_sensibles: '',
-                nombre_duree_conservation: '',
-                duree_conservation_specifique: '',
-                categorie_destinataire: ['', '', '', ''],
-                organisme_externe: ['', '', '',''],
-                sous_traitant: ['', '', '', ''],
-                transfer_donnees_hors_ue: '',
-                controle_acces_utilisateurs: '',
-                mesure_tracabilite: '',
-                mesure_protection_logiciel: '',
-                sauvegarde_donnees: '',
-                chiffrement_donnees: '',
-                controle_sous_traitant: '',
-                autre_mesure: ''
-
-            }
-        }
+            default: getInfoDefaultActivity()
+        },
     },
     methods: {
         activeClass(active) {
@@ -467,19 +457,42 @@ var vue = new Vue({
                 , email: 'dpo_email'
                 , tel: 'dpo_tel'
             }
-            , activites: {}
+            , activites: [
+                {
+                    isActive: true,
+                    info: {
+                        ...getInfoDefaultActivity(),
+                        ...{
+                            nom: 'activité 1'
+                        }
+                    }
+                },
+                {
+                    isActive: false,
+                    info: {
+                        ...getInfoDefaultActivity(),
+                        ...{
+                            nom: 'activité 1'
+                        }
+                    }
+                }
+            ]
         },
     },
     methods: {
         generateExcel() {
             axios({
                 method:'post',
-                url:'http://quickrest.local:8084/'
+                url:'http://quickrest.local:81/',
+                data: this.data
             })
             .then(function(response) {
                 console.log(response);
+            })
+            .catch(function (error) {
+                // your action on error success
+                console.log(error);
             });
-
         }
     },
 });

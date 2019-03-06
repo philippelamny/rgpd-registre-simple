@@ -17,32 +17,32 @@ class PostAction extends AManager
             array('title' => "Ce document vise à recenser les traitements de données personnelles mis en œuvre dans votre organismeen tant que responsable de traitement.Centralisé et régulièrement mis à jour, il vous permet de répondre à l’obligation de tenir un registre prévue parle RGPD", 'row' => $row++)
             //,array($row++,$row++)
             // SOCIETE
-            ,array('title' => 'Raison Sociale', 'value' => $this->_options['grpd_raison_sociale'], 'row' => $row++)
+            ,array('title' => 'Raison Sociale', 'value' => $this->_options['societe'], 'row' => $row++)
             //,array($row++,$row++)
             //COORDONNEE RESPONSABLE SOCIETE
             ,array('title' => "Coordonnées du responsable de l’organisme responsable de traitement ou son représentant si le responsable est situé en dehors de l’UE", 'row' => $row)
-            ,array('title' => 'Nom', 'value' => $this->_options['grpd_coord_responsable_nom'], 'row' => $row++)
-            ,array('title' => 'Prénom', 'value' => $this->_options['grpd_coord_responsable_prenom'], 'row' => $row++)
-            ,array('title' => 'Adresse 1', 'value' => $this->_options['grpd_coord_responsable_adr1'], 'row' => $row++)
-            ,array('title' => 'Adresse 2', 'value' => $this->_options['grpd_coord_responsable_adr2'], 'row' => $row++)
-            ,array('title' => 'cp', 'value' => $this->_options['grpd_coord_responsable_cp'], 'row' => $row)
-            ,array('title' => 'ville', 'value' => $this->_options['grpd_coord_responsable_ville'], 'row' => $row)
-            ,array('title' => 'pays', 'value' => $this->_options['grpd_coord_responsable_pays'], 'row' => $row++)
-            ,array('title' => 'email', 'value' => $this->_options['grpd_coord_responsable_email'],'row' => $row++)
-            ,array('title' => 'tel', 'value' => $this->_options['grpd_coord_responsable_tel'], 'row' => $row++)
+            ,array('title' => 'Nom', 'value' => $this->_options['pdg']['last_name'], 'row' => $row++)
+            ,array('title' => 'Prénom', 'value' => $this->_options['pdg']['first_name'], 'row' => $row++)
+            ,array('title' => 'Adresse 1', 'value' => $this->_options['pdg']['address_1'], 'row' => $row++)
+            ,array('title' => 'Adresse 2', 'value' => $this->_options['pdg']['address_2'], 'row' => $row++)
+            ,array('title' => 'cp', 'value' => $this->_options['pdg']['cp'], 'row' => $row)
+            ,array('title' => 'ville', 'value' => $this->_options['pdg']['town'], 'row' => $row)
+            ,array('title' => 'pays', 'value' => $this->_options['pdg']['country'], 'row' => $row++)
+            ,array('title' => 'email', 'value' => $this->_options['pdg']['email'],'row' => $row++)
+            ,array('title' => 'tel', 'value' => $this->_options['pdg']['tel'], 'row' => $row++)
             ,array($row++)
             // COORDONNE DPO
             ,array('title' => 'Coordonnées du délégué à la protection des données si vous avez désigné un DPO', 'row' => $row++)
-            ,array('title' => 'Nom', 'value' => $this->_options['grpd_coord_dpo_nom'], 'row' => $row++)
-            ,array('title' => 'Prénom', 'value' => $this->_options['grpd_coord_dpo_prenom'], 'row' => $row++)
-            ,array('title' => 'Raison Sociale Société (si externe)', 'value' => $this->_options['grpd_coord_dpo_raison_sociale'], 'row' => $row++)
-            ,array('title' => 'Adresse 1', 'value' => $this->_options['grpd_coord_dpo_adr1'], 'row' => $row++)
-            ,array('title' => 'Adresse 2', 'value' => $this->_options['grpd_coord_dpo_adr2'], 'row' => $row++)
-            ,array('title' => 'ville', 'value' => $this->_options['grpd_coord_dpo_ville'], 'row' => $row)
-            ,array('title' => 'cp', 'value' => $this->_options['grpd_coord_dpo_cp'], 'row' => $row)
-            ,array('title' => 'pays', 'value' => $this->_options['grpd_coord_dpo_pays'], 'row' => $row++)
-            ,array('title' => 'email', 'value' => $this->_options['grpd_coord_dpo_email'], 'row' => $row++)
-            ,array('title' => 'tel', 'value' => $this->_options['grpd_coord_dpo_tel'], 'row' => $row++)
+            ,array('title' => 'Nom', 'value' => $this->_options['dpo']['last_name'], 'row' => $row++)
+            ,array('title' => 'Prénom', 'value' => $this->_options['dpo']['first_name'], 'row' => $row++)
+            ,array('title' => 'Raison Sociale Société (si externe)', 'value' => $this->_options['dpo']['societe'], 'row' => $row++)
+            ,array('title' => 'Adresse 1', 'value' => $this->_options['dpo']['address_1'], 'row' => $row++)
+            ,array('title' => 'Adresse 2', 'value' => $this->_options['dpo']['address_2'], 'row' => $row++)
+            ,array('title' => 'cp', 'value' => $this->_options['dpo']['cp'], 'row' => $row)
+            ,array('title' => 'ville', 'value' => $this->_options['dpo']['town'], 'row' => $row)
+            ,array('title' => 'pays', 'value' => $this->_options['dpo']['country'], 'row' => $row++)
+            ,array('title' => 'email', 'value' => $this->_options['dpo']['email'],'row' => $row++)
+            ,array('title' => 'tel', 'value' => $this->_options['dpo']['tel'], 'row' => $row++)
             ,array($row++, $row++, $row++)
             // LISTE DES TRAITEMENTS
             ,array('title' => 'Liste des traitements', 'row' => $row++)
@@ -66,16 +66,15 @@ class PostAction extends AManager
         );
 
         $nbActivites = 1;
-        $arActivites = array();
-        foreach ($this->_options["grpd_act_name"] as $key => $name) {
-            $header[] = array( 'value' => $name, 'row' => $row);
+        foreach ($this->_options["activites"] as $key => $activite) {
+            $header[] = array( 'value' => $activite['nom'], 'row' => $row);
             $header[] = array('value' => str_pad($nbActivites,8, 'act-0000', STR_PAD_LEFT), 'row' => $row);
-            $header[] = array( 'value' => $this->_options['grpd_act_date_creation'][$key], 'row' => $row);
-            $header[] = array('value' => $this->_options['grpd_act_data_derniere_maj'][$key], 'row' => $row);
-            $header[] = array( 'value' => $this->_options['grpd_act_nom_responsable'][$key], 'row' => $row);
-            $header[] = array('value' => $this->_options['grpd_act_objectif'][$key], 'row' => $row);
-            $header[] = array( 'value' => $this->_options['grpd_act_transfer_donnees_hors_ue'][$key] ? 'Oui' : 'Non', 'row' => $row);
-            $header[] = array( 'value' => $this->_options['grpd_act_donnees_sensibles'][$key] ? 'Oui' : 'Non' , 'row' => $row++);
+            $header[] = array( 'value' => $activite['date_creation'][$key], 'row' => $row);
+            $header[] = array('value' => $activite['data_derniere_maj'][$key], 'row' => $row);
+            $header[] = array( 'value' => $activite['nom_responsable'][$key], 'row' => $row);
+            $header[] = array('value' => $activite['objectif'][$key], 'row' => $row);
+            $header[] = array( 'value' => $activite['transfer_donnees_hors_ue'][$key] ? 'Oui' : 'Non', 'row' => $row);
+            $header[] = array( 'value' => $activite['donnees_sensibles'][$key] ? 'Oui' : 'Non' , 'row' => $row++);
             $nbActivites++;
         }
 
@@ -122,14 +121,15 @@ class PostAction extends AManager
         $token = $this->_options['grpd_token'];
         if (!Token::isOK($token)) throw new \Exception("Invalide Token");
 
-        $title = "registre_rgpd_" . ( $this->_options["grpd_raison_sociale"] ? preg_replace( '/[^a-z0-9]+/', '-', strtolower( $this->_options["grpd_raison_sociale"] )): '');
+        $slugTitle = $this->_options["societe"] ? preg_replace( '/[^a-z0-9]+/', '-', strtolower( $this->_options["societe"] )): '';
+        $title = "registre_rgpd_" . $slugTitle;
 
         $objPHPExcel = new \PHPExcel();
 
         // Manage the title / Subject
         $objPHPExcel->getProperties()->setCreator("Philippe Lam")
             ->setLastModifiedBy("Philippe Lam")
-            ->setTitle("Liste des traitements " + preg_replace( '/[^a-z0-9]+/', '-', strtolower( $this->_options["grpd_raison_sociale"] )))
+            ->setTitle("Liste des traitements " . $slugTitle)
             ->setSubject("Registres d'activités");
 
         // Feuille 1: Information Sur la société

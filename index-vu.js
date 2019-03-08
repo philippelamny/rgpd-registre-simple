@@ -34,7 +34,8 @@ let ComponentActivites = {
             return {
                 isActive: false,
                 info: {
-                    nom: name
+                    ...getInfoDefaultActivity(),
+                    ...{  nom: name }
                 }
             };
         },

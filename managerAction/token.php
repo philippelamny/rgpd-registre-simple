@@ -18,7 +18,7 @@ class Token
      */
     public static function isOK($token) {
 
-        if (empty(__TOKEN_ALLOW)) return true;
+        if (empty(static::__TOKEN_ALLOW)) return true;
 
         return in_array($token, self::__TOKEN_ALLOW);
     }

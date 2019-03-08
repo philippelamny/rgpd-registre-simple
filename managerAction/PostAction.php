@@ -66,15 +66,30 @@ class PostAction extends AManager
         );
 
         $nbActivites = 1;
-        foreach ($this->_options["activites"] as $key => $activite) {
+        foreach ($this->_options["activites"] as $key => $activiteObject) {
+            $activite = $activiteObject['info'];
+
             $header[] = array( 'value' => $activite['nom'], 'row' => $row);
             $header[] = array('value' => str_pad($nbActivites,8, 'act-0000', STR_PAD_LEFT), 'row' => $row);
-            $header[] = array( 'value' => $activite['date_creation'][$key], 'row' => $row);
-            $header[] = array('value' => $activite['data_derniere_maj'][$key], 'row' => $row);
-            $header[] = array( 'value' => $activite['nom_responsable'][$key], 'row' => $row);
-            $header[] = array('value' => $activite['objectif'][$key], 'row' => $row);
-            $header[] = array( 'value' => $activite['transfer_donnees_hors_ue'][$key] ? 'Oui' : 'Non', 'row' => $row);
-            $header[] = array( 'value' => $activite['donnees_sensibles'][$key] ? 'Oui' : 'Non' , 'row' => $row++);
+            if (empty($activite['created_at'])) {
+                $header[] = array( 'value' => (new \DateTime())->format('Y-m-d'), 'row' => $row);
+            }
+            else
+            {
+                $header[] = array( 'value' => $activite['created_at'], 'row' => $row);
+            }
+            if (empty($activite['updated_at'])) {
+                $header[] = array( 'value' => (new \DateTime())->format('Y-m-d'), 'row' => $row);
+            }
+            else
+            {
+                $header[] = array( 'value' => $activite['updated_at'], 'row' => $row);
+            }
+
+            $header[] = array( 'value' => $activite['nom_responsable'], 'row' => $row);
+            $header[] = array('value' => $activite['objectif'], 'row' => $row);
+            $header[] = array( 'value' => $activite['transfer_donnees_hors_ue'] ? 'Oui' : 'Non', 'row' => $row);
+            $header[] = array( 'value' => $activite['donnees_sensibles'] ? 'Oui' : 'Non' , 'row' => $row++);
             $nbActivites++;
         }
 
@@ -136,8 +151,9 @@ class PostAction extends AManager
         $objWorkSheet = $objPHPExcel->getActiveSheet();
         $objWorkSheet->setTitle("Liste des traitements");
 
-        $this->dealInfoGenerale($objWorkSheet);
 
+        $this->dealInfoGenerale($objWorkSheet);
+/*
         // Pour chaque activité, creer une nouvelle feuille
         $nbActivites = 1;
         $arActivites = array();
@@ -173,7 +189,7 @@ class PostAction extends AManager
                 }
                 $pActRow++;
             }
-        }
+        }*/
 
         // Download the file
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

@@ -485,10 +485,22 @@ var vue = new Vue({
             axios({
                 method:'post',
                 url:'http://quickrest.local:81/',
-                data: this.data
+                data: this.data,
+                responseType: 'blob',
+                headers: {
+                    'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                }
             })
             .then(function(response) {
+
                 console.log(response);
+                const url = window.URL.createObjectURL(new Blob([response.data], {type:'application/vnd.ms-excel'}));
+                const link = document.createElement('a');
+
+                link.href = url;
+                link.setAttribute('download', 'registre-rgpd.xlsx');
+                document.body.appendChild(link);
+                link.click();
             })
             .catch(function (error) {
                 // your action on error success

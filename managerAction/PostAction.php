@@ -153,47 +153,44 @@ class PostAction extends AManager
 
 
         $this->dealInfoGenerale($objWorkSheet);
-/*
+
         // Pour chaque activité, creer une nouvelle feuille
-        $nbActivites = 1;
-        $arActivites = array();
-        foreach ($this->_options["grpd_act_name"] as $name) {
+        $nbActivites = 0;
+        $nbTotal = count($this->_options["activites"]);
+        while(++$nbActivites <= $nbTotal)
+        {
             $newActivite = $objPHPExcel->createSheet();
             $newActivite->setTitle("Activité ref " . str_pad($nbActivites,8, 'act-0000', STR_PAD_LEFT));
-
             $arActivites[$nbActivites - 1] = $newActivite;
-            $nbActivites++;
         }
 
         $pColumnTitle = 0;
         $pColumnValue = 1;
-        $pRow = 1; // Principal
-        $pActRow = 1; // Activite
-        foreach ($this->_options as $key => $value) {
-            if (!preg_match('/^grpd_act_/', $key)) {
-                $arTitle = explode('_', $key);
-                array_shift($arTitle);
-                $objWorkSheet->setCellValueByColumnAndRow($pColumnTitle, $pRow, implode(" ", $arTitle));
-                $objWorkSheet->setCellValueByColumnAndRow($pColumnValue, $pRow, $value);
-                $pRow++;
-            }
-            else {
-                $arTitle = explode('_', $key);
-                array_shift($arTitle);
-                array_shift($arTitle);
-                $nbActivites = 0;
-                foreach ($value as $sValue) {
-                    $arActivites[$nbActivites]->setCellValueByColumnAndRow($pColumnTitle, $pActRow, implode(" ", $arTitle));
-                    $arActivites[$nbActivites]->setCellValueByColumnAndRow($pColumnValue, $pActRow, $sValue);
-                    $nbActivites++;
+
+        foreach ($this->_options['activites'] as $index => $activite)
+        {
+            $pActRow = 1; // Activite
+            foreach ($activite['info'] as $key => $value)
+            {
+                $title = ucfirst(str_replace('_', ' ', $key));
+                $arActivites[$index]->setCellValueByColumnAndRow($pColumnTitle, $pActRow, $title);
+
+                if (is_array($value)) {
+                    foreach ($value as $sValue) {
+                        $arActivites[$index]->setCellValueByColumnAndRow($pColumnValue, $pActRow, $sValue);
+                        $pActRow++;
+                    }
                 }
-                $pActRow++;
+                else {
+                    $arActivites[$index]->setCellValueByColumnAndRow($pColumnValue, $pActRow, $value);
+                    $pActRow++;
+                }
             }
-        }*/
+        }
 
         // Download the file
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header("Content-Disposition:attachment; filename={$title}.xlsx");
+        header("Content-Disposition:attachment; filename=registre-rgpd.xlsx");
         header('Connection:close');
 
         $objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');

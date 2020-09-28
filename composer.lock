@@ -4,53 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3be980cfe126debd2fc49725a6eaa8d5",
+    "content-hash": "2aea06e355a25c50cffc3fc056c53799",
     "packages": [
-        {
-            "name": "TrTool/ParseUrlReST",
-            "version": "dev-develop",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/philippelamny/TrTool-ParseUrlReST.git",
-                "reference": "064092c208b725f6d0357cf547a40c32713644d3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/philippelamny/TrTool-ParseUrlReST/zipball/064092c208b725f6d0357cf547a40c32713644d3",
-                "reference": "064092c208b725f6d0357cf547a40c32713644d3",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "TrTool\\ParseUrlReST\\Src\\": "./src"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Philippe Lam",
-                    "email": "philippe.lam.ny@gmail.com"
-                }
-            ],
-            "description": "The package consists parse your URL and to generate a Class Action Manager",
-            "keywords": [
-                "PARSER",
-                "REST",
-                "SIMPLE",
-                "URL"
-            ],
-            "support": {
-                "source": "https://github.com/philippelamny/TrTool-ParseUrlReST/tree/develop",
-                "issues": "https://github.com/philippelamny/TrTool-ParseUrlReST/issues"
-            },
-            "time": "2018-07-05T11:48:11+00:00"
-        },
         {
             "name": "phpoffice/phpexcel",
             "version": "1.8.2",
@@ -118,9 +73,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "trtool/parseurlrest": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

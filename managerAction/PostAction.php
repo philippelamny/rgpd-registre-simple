@@ -176,15 +176,14 @@ class PostAction extends AManager
                 $arActivites[$index]->setCellValueByColumnAndRow($pColumnTitle, $pActRow, $title);
 
                 if (is_array($value)) {
-                    foreach ($value as $sValue) {
-                        $arActivites[$index]->setCellValueByColumnAndRow($pColumnValue, $pActRow, $sValue);
-                        $pActRow++;
+                    foreach ($value as $col => $sValue) {
+                        $arActivites[$index]->setCellValueByColumnAndRow($pColumnValue + $col, $pActRow, $sValue);
                     }
                 }
                 else {
                     $arActivites[$index]->setCellValueByColumnAndRow($pColumnValue, $pActRow, $value);
-                    $pActRow++;
                 }
+                $pActRow++;
             }
         }
 

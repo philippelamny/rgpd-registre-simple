@@ -105,7 +105,7 @@ function getInfoDefaultActivity() {
         nom_responsable: '',
         software_name: '',
         objectif: '',
-        categorie_personnes_concernees: ['', '', '', '', ''],
+        categorie_personnes_concernees: {0:'', 1:'', 2:'', 3:''},
         categorie_donnees_collectees: '',
         vie_personnelle: '',
         vie_professionnelle: '',
@@ -117,9 +117,9 @@ function getInfoDefaultActivity() {
         donnees_sensibles: '',
         nombre_duree_conservation: '',
         duree_conservation_specifique: '',
-        categorie_destinataire: ['', '', '', ''],
-        organisme_externe: ['', '', '',''],
-        sous_traitant: ['', '', '', ''],
+        categorie_destinataire: {0:'', 1:'', 2:'', 3:''},
+        organisme_externe: {0:'', 1:'', 2:'', 3:''},
+        sous_traitant: {0:'', 1:'', 2:'', 3:''},
         transfer_donnees_hors_ue: '',
         controle_acces_utilisateurs: '',
         mesure_tracabilite: '',
@@ -192,7 +192,7 @@ let ComponentActiviteItem = {
           <div class="form-group">
             <label><h6>Catégories de personnes concernées</h6><i>Listez les différents types de personnes dont vous collectez ou utilisez les données.</i> <i data-toggle="tooltip" data-placement="top" title="salariés, usagers, clients, prospects, bénéficiaires, etc."> Exemple </i></label>
             <div class="form-inline">
-              <input type="text" class="form-control mr-2" v-for="elt in info.categorie_personnes_concernees" :v-model="elt">
+              <input type="text" class="form-control mr-2" v-for="(elt, index) in info.categorie_personnes_concernees" v-model="info.categorie_personnes_concernees[index]" :key="index">
             </div>
           </div>
           <div class="form-group">
@@ -248,15 +248,15 @@ let ComponentActiviteItem = {
           <div class="form-group">
             <label><h6>Catégories de destinataires des données</h6><i>Destinataires internes. </i> <i data-toggle="tooltip" data-placement="top" title="entité ou service, catégories de personneshabilitées, direction informatique, etc."> Exemple </i></label>
             <div class="form-inline">
-              <input type="text" class="form-control mr-2" v-for="elt in info.categorie_destinataire" :v-model="elt">
+              <input type="text" class="form-control mr-2" v-for="(elt, index) in info.categorie_destinataire" v-model="info.categorie_destinataire[index]">
             </div>
             <label><i>Organismes externes. </i> <i data-toggle="tooltip" data-placement="top" title="filiales,  partenaires,  etc."> Exemple </i></label>
             <div class="form-inline">
-                <input type="text" class="form-control mr-2" v-for="elt in info.organisme_externe" :v-model="elt">
+                <input type="text" class="form-control mr-2" v-for="(elt, index) in info.organisme_externe" v-model="info.organisme_externe[index]">
             </div>
             <label><i>Sous-traitants. </i> <i data-toggle="tooltip" data-placement="top" title="hébergeurs, prestataires et maintenanceinformatiques, etc."> Exemple </i></label>
             <div class="form-inline">
-                <input type="text" class="form-control mr-2" v-for="elt in info.sous_traitant" :v-model="elt">
+                <input type="text" class="form-control mr-2" v-for="(elt, index) in info.sous_traitant" v-model="info.sous_traitant[index]">
             </div>
           </div>
           <div class="form-group">

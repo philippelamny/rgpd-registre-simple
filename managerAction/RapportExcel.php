@@ -8,8 +8,16 @@ use TrTool\ParseUrlReST\Src\Classes\AManager;
  * Class PostAction
  * @package MyManagerAction
  */
-class PostAction extends AManager
+class RapportExcel
 {
+    public $_options;
+
+    public function __construct(array $options)
+    {
+        $this->_options = $options;
+
+    }
+
     private function dealInfoGenerale(&$objWorkSheet) {
         $row = 2;
         $header = array(
@@ -132,10 +140,9 @@ class PostAction extends AManager
     }
 
     public function deal() {
-        // Generation d'un excel pour le rgpd
-        die;
-        $token = $this->_options['grpd_token'];
 
+        // Generation d'un excel pour le rgpd
+        $token = $this->_options['grpd_token'];
 
         $slugTitle = $this->_options["societe"] ? preg_replace( '/[^a-z0-9]+/', '-', strtolower( $this->_options["societe"] )): '';
         $title = "registre_rgpd_" . $slugTitle;

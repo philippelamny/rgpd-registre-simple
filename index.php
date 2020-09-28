@@ -13,9 +13,13 @@ $content = trim(file_get_contents("php://input"));
 $decoded = json_decode($content, true);
 
 if (empty($decoded)) return 'no data';
-
+/*
 $managerAction = \TrTool\ParseUrlReST\Src\Classes\Parser::getClassManager("POST", "", $decoded, null, \TrTool\ParseUrlReST\Src\classesManagerTest\TestParserConfig::class, '\\MyManagerAction\\');
 
 $managerAction->deal();
+*/
 
+$action = new \MyManagerAction\RapportExcel($decoded);
+
+$action->deal();
 ?>

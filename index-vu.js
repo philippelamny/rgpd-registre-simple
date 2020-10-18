@@ -434,7 +434,7 @@ var vue = new Vue({
     data: {
         data: {
             societe: 'Societe test 1'
-            , token: 'tokeczegfeg@fefg'
+            , token: 'token:rgpd-test'
             , pdg: {
                 first_name: 'pdg_first_name'
                 , last_name: 'pdg_last_name'

@@ -2,7 +2,6 @@
 
 namespace MyManagerAction;
 
-use TrTool\ParseUrlReST\Src\Classes\AManager;
 
 /**
  * Class PostAction
@@ -144,6 +143,8 @@ class RapportExcel
         // Generation d'un excel pour le rgpd
 
         $token = $this->_options['token'];
+
+        if (!Token::isOK($token)) throw new \Exception("Invalide Token");
 
         $slugTitle = $this->_options["societe"] ? preg_replace( '/[^a-z0-9]+/', '-', strtolower( $this->_options["societe"] )): '';
         $title = "registre_rgpd_" . $slugTitle;

@@ -484,7 +484,7 @@ var vue = new Vue({
         generateExcel() {
             axios({
                 method:'post',
-                url:'http://quickrest.local:81/',
+                url:'https://lets-rgdp.000webhostapp.com/api.php',
                 data: this.data,
                 responseType: 'blob',
                 headers: {

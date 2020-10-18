@@ -142,7 +142,8 @@ class RapportExcel
     public function deal() {
 
         // Generation d'un excel pour le rgpd
-        $token = $this->_options['grpd_token'];
+
+        $token = $this->_options['token'];
 
         $slugTitle = $this->_options["societe"] ? preg_replace( '/[^a-z0-9]+/', '-', strtolower( $this->_options["societe"] )): '';
         $title = "registre_rgpd_" . $slugTitle;

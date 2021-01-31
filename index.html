@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>RGPD Conformité</title>
+  </head>
+  <body>
+
+    <div id="app">
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+      <h1><a href="https://www.cnil.fr/fr/RGDP-le-registre-des-activites-de-traitement">Registre conforme</a> au reglement général à la protection des données (<a href="https://www.cnil.fr/fr/le-rgpd-cest-maintenant-les-changements-retenir-et-les-outils-pour-bien-se-preparer">GRPD</a>).</h1>
+
+      <h2>Objectif</h2>
+      <span>Ce document vise à recenser les traitements de données personnelles mis en œuvre dans votre organismeen tant que responsable de traitement.Centralisé et régulièrement mis à jour, il vous permet de répondre à l’obligation de tenir un registre prévue parle RGPD</span>
+
+      <h2>Composition</h2>
+
+      <ol>
+        <li>Une première page du registre recense les informations communes à toutes vos activités de traitement.
+          <ol>
+            <li>Les coordonnées de votre organisme (ou de son représentant sur le territoire européen si votre organisme n’est pas établi dans l’Union européenne)</li>
+            <li>Les coordonnées du délégué à la protectiondes données (DPO)si vous en disposez</li>
+            <li>La liste des activités de votre organisme impliquant le traitement de données personnelles.</li>
+          </ol>
+        </li>
+        <li>
+          Pour chaque activité recensée, vous devrez créer et tenir à jour une fiche de registre.
+       </li>
+      </ol>
+
+      <h4>Information à la creation du registre en conformité avec le RGPD <i>référence à la <a href="https://www.cnil.fr/sites/default/files/atoms/files/registre_rgpd_basique.pdf">template</a> fournie par la CNIL</i></h4>
+
+      <div class="container col-sm-12 mt-4" id="content-for-creation">
+        <!--<form method="POST" action="http://quickrest.local:8084/">-->
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="token-label">Token pour des templates spécifiques (philippe.lam.ny@gmail.com)</span>
+            </div>
+            <input type="text" class="form-control col-sm-2" aria-describedby="token-label" name="grpd_token" :value="data.token">
+          </div>
+
+          <div class="form-group row">
+            <label for="grpd_raison_sociale" class="col-sm-2 col-form-label">Raison Sociale</label>
+            <div class="col-sm-10">
+              <input type="text"  class="form-control" id="grpd_raison_sociale" name="grpd_raison_sociale" :value="data.societe">
+            </div>
+          </div>
+
+          <div id="content-for-coord">
+            <ul class="nav nav-pills mb-3" id="coord-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="coord-responsable-tab" data-toggle="tab" href="#coord-responsable" role="tab" aria-controls="home" aria-selected="true">Coordonnées du responsable de l’organisme <i>responsable de traitement ou son représentant si le responsable est situé en dehors de l’UE</i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="coord-dpo-tab" data-toggle="tab" href="#coord-dpo" role="tab" aria-controls="profile" aria-selected="false">Coordonnées du délégué à la protection des données</a> <a href="https://www.cnil.fr/fr/devenir-delegue-la-protection-des-donnees"><i>si vous avez désigné un DPO</i></a>
+              </li>
+            </ul>
+            <div class="tab-content" id="coord-tab-conten">
+
+              <component-address-item :id="'coord-responsable'" :info="data.pdg" :active="true"></component-address-item>
+
+              <component-address-item :id="'coord-dpo'" :info="data.dpo" :active="false" :withRS="true"></component-address-item>
+            </div>
+          </div>
+
+          <component-activites :list="data.activites"/>
+
+
+        <!--</form>-->
+      </div>
+
+      <footer style="height: 50px;">
+        <div class="fixed-bottom mx-auto">
+          <button class="btn btn-primary btn-success" @click="generateExcel()">excel</button>
+        </div>
+      </footer>
+
+    </div>
+
+
+    <!-- Vue JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./index-vu.js"></script>
+
+    <script>
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+    </script>
+  </body>
+</html>

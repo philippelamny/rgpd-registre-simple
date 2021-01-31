@@ -1,0 +1,26 @@
+# Adopt version 3 syntax:
+#   https://docs.docker.com/compose/compose-file/#/versioning
+version: '3'
+
+volumes:
+  composer_data:
+    driver: local
+
+services:
+
+###########################################
+# Setup the Apache/PHP/Composer container #
+###########################################
+  rgpd_httpd:
+    container_name: rgpd_httpd
+    restart: 'no'
+    image: nicolasfrey/php7.0-apache-composer:0.2
+    ports:
+      - 81:80
+    environment:
+      - TZ=Europe/Paris
+      - VIRTUAL_HOST=test.local
+    volumes:
+      - ./:/var/www/html/:cached
+      - composer_data:/usr/local/composer
+      - ./docker/apache/vhosts/:/etc/apache2/sites-enabled/

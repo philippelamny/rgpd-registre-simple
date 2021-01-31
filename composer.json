@@ -1,0 +1,11 @@
+{
+    "require": {
+        "phpoffice/phpexcel": "1.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "MyManagerAction\\": "./managerAction"
+        }
+    }
+
+}
